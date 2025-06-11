@@ -36,7 +36,7 @@ LABEL org.opencontainers.image.version=${N8N_VERSION}
 
 WORKDIR /home/node
 COPY --from=builder /compiled /usr/local/lib/node_modules/n8n
-COPY docker/images/n8n/docker-entrypoint.sh /
+# COPY docker/images/n8n/docker-entrypoint.sh /
 
 # Setup the Task Runner Launcher
 ARG TARGETPLATFORM
@@ -70,4 +70,4 @@ RUN npm install -g npm@11.4.1
 
 ENV SHELL /bin/sh
 USER node
-ENTRYPOINT ["tini", "--", "/docker-entrypoint.sh"]
+ENTRYPOINT ["n8n"]
